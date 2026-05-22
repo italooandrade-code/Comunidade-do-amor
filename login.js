@@ -42,7 +42,7 @@ form.addEventListener("submit", function(event){
 
     const email = emailInput.value.trim();
 
-    fetch(`${API_URL}/login`,  {
+    fetch(`${API_URL}/verificar-acesso`, {
       method: "POST",
       credentials: "include",
       headers: {
@@ -93,7 +93,7 @@ form.addEventListener("submit", function(event){
     const email = emailInput.value;
     const password = passwordInput.value;
 
-    fetch(`${API_URL}/login"`, {
+    fetch(`${API_URL}/login`, {
       method: "POST",
       credentials: "include",
       headers: {
