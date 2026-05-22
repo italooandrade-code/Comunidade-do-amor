@@ -1,7 +1,9 @@
 //=========================
 // 0️⃣ PROTEÇÃO DO ADMIN
 //=========================
-fetch("http://127.0.0.1:3000/verificar-admin", {
+
+const API_URL = "https://comunidade-do-amor-production.up.railway.app";
+fetch(`${API_URL}/verificar-admin`, {
   method: "GET",
   credentials: "include"
 })
@@ -33,7 +35,7 @@ const nameInput = document.getElementById("name");
 //=========================
 function loadUsers(){
 
-  fetch("http://localhost:3000/usuarios")
+  fetch(`${API_URL}/usuarios`)
     .then(response => response.json())
     .then(data => {
 
@@ -82,7 +84,7 @@ form.addEventListener("submit", function(event){
   const email = emailInput.value.trim();
 
   // Envia os dados para o backend
-  fetch("http://localhost:3000/criar-usuario", {
+  fetch(`${API_URL}/criar-usuario`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

@@ -1,4 +1,7 @@
 //=========================
+
+const API_URL = "https://comunidade-do-amor-production.up.railway.app";
+
 // 1️⃣ CHAVES
 //=========================
 const LOGGED_KEY = "comunidade_logged";
@@ -7,7 +10,7 @@ const SESSION_EMAIL_KEY = "comunidade_email";
 //=========================
 // 2️⃣ PROTEÇÃO COM SESSION
 //=========================
-fetch("http://127.0.0.1:3000/verificar-sessao", {
+fetch(`${API_URL}/verificar-sessao`, {
   method: "GET",
   credentials: "include"
 })
@@ -38,7 +41,7 @@ fetch("http://127.0.0.1:3000/verificar-sessao", {
 //=========================
 document.getElementById("logoutBtn").addEventListener("click", function(){
 
-  fetch("http://127.0.0.1:3000/logout", {
+  fetch(`${API_URL}/logout`, {
     method: "POST",
     credentials: "include"
   })

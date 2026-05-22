@@ -2,9 +2,10 @@
 // 1️⃣ PROTEÇÃO COM SESSION
 //=========================
 
+const API_URL = "https://comunidade-do-amor-production.up.railway.app";
 let email = "";
 
-fetch("http://127.0.0.1:3000/verificar-sessao", {
+fetch(`${API_URL}/verificar-sessao`, {
   method: "GET",
   credentials: "include"
 })

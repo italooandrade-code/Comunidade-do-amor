@@ -1,6 +1,8 @@
 //=========================
 // 1️⃣ CHAVES DO SISTEMA
 //=========================
+
+const API_URL = "https://comunidade-do-amor-production.up.railway.app";
 const LOGGED_KEY = "comunidade_logged";
 const SESSION_EMAIL_KEY = "comunidade_email";
 
@@ -59,7 +61,7 @@ form.addEventListener("submit", function(event){
 //=========================
 // 7️⃣ SALVAR SENHA NO BANCO
 //=========================
-fetch("http://localhost:3000/criar-senha", {
+fetch(`${API_URL}/criar-senha`, {
   method: "POST",
   headers: {
     "Content-Type": "application/json"

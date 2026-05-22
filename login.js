@@ -1,4 +1,6 @@
 //=========================
+
+const API_URL = "https://comunidade-do-amor-production.up.railway.app";
 // 1️⃣ CHAVES DO SISTEMA
 //=========================
 const LOGGED_KEY = "comunidade_logged";
@@ -40,7 +42,7 @@ form.addEventListener("submit", function(event){
 
     const email = emailInput.value.trim();
 
-    fetch("http://127.0.0.1:3000/verificar-acesso", {
+    fetch(`${API_URL}/login`,  {
       method: "POST",
       credentials: "include",
       headers: {
