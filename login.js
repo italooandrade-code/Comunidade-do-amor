@@ -93,7 +93,7 @@ form.addEventListener("submit", function(event){
     const email = emailInput.value;
     const password = passwordInput.value;
 
-    fetch("http://127.0.0.1:3000/login", {
+    fetch(`${API_URL}/login"`, {
       method: "POST",
       credentials: "include",
       headers: {
