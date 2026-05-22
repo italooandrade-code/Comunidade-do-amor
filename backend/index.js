@@ -10,6 +10,7 @@ const cors = require("cors");
 const session = require("express-session");
 const bcrypt = require("bcrypt");
 const OpenAI = require("openai");
+const path = require("path");
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
@@ -28,6 +29,9 @@ app.use(cors({
 // Permite receber JSON do frontend
 app.use(express.json());
 
+// Faz o Express servir os arquivos do frontend
+app.use(express.static(path.join(__dirname, "..")));
+
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
@@ -42,10 +46,8 @@ const HistoricoIA = require("./models/HistoricoIA");
 // Faz o Sequelize criar a tabela automaticamente
 Usuario.sync();
 HistoricoIA.sync();
-
-// Rota de teste
 app.get("/", (req, res) => {
-  res.send("Servidor da Comunidade do Amor funcionando!");
+  res.sendFile(path.join(__dirname, "..", "login.html"));
 });
 
 // Rota para criar usuário pelo painel admin
