@@ -1,12 +1,23 @@
 // Importa o Sequelize
 const Sequelize = require("sequelize");
 
-// Cria a conexão com o banco comunidade_amor no MySQL/XAMPP
-const sequelize = new Sequelize("comunidade_amor", "root", "", {
-  host: "127.0.0.1",
-  dialect: "mysql",
-  logging: false
-});
+
+
+const sequelize = new Sequelize(
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
+  {
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    dialect: process.env.DB_DIALECT
+  }
+);
+
+module.exports = {
+  Sequelize: Sequelize,
+  sequelize: sequelize
+};
 
 // Testa a conexão com o banco
 sequelize.authenticate()
