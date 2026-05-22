@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comunidade do Amor - Iniciação</title>
+
+  <link rel="stylesheet" href="global.css" />
+  <link rel="stylesheet" href="iniciacao.css" />
+</head>
+<body>
+  <div class="container">
+
+    <!-- TOPO -->
+    <div class="init-header">
+      <div class="init-header-left">
+        <a href="home.html" class="back-link">← Voltar</a>
+        <h1>Iniciação</h1>
+        <p class="init-subtitle">Sua jornada espiritual de 30 dias</p>
+      </div>
+
+      <div class="init-badge" id="dayBadge">
+        Dia 1 de 30
+      </div>
+    </div>
+
+    <div class="init-warning">
+  <p id="warningText">
+    Seja honesta consigo mesma. Para viver os resultados desta jornada, é importante realizar cada atividade com presença, verdade e intenção.
+  </p>
+</div>
+
+    <!-- CARD PRINCIPAL -->
+    <div class="init-card-top">
+  <span class="status-badge" id="statusBadge">Disponível agora</span>
+</div>
+
+      <h2 class="init-day-title" id="dayTitle">Despertar</h2>
+
+      <!-- MENSAGEM -->
+      <div class="init-block">
+        <h3>💜 Mensagem do dia</h3>
+        <p id="messageText">
+          Hoje é o início da sua jornada. Recomeçar também é uma forma de amor.
+          Permita-se sentir, respirar e se reconectar com sua própria energia.
+        </p>
+      </div>
+
+      <!-- YOGA -->
+      <div class="init-block">
+        <h3>🧘 Yoga</h3>
+        <ul id="yogaList">
+          <li>Sente-se em um local calmo</li>
+          <li>Mantenha a coluna ereta</li>
+          <li>Respire profundamente 5 vezes</li>
+          <li>Alongue pescoço e ombros devagar</li>
+        </ul>
+      </div>
+
+      <!-- RITUAL -->
+      <div class="init-block">
+        <h3>🕯️ Ritual</h3>
+        <p><strong>Vela:</strong> <span id="ritualVelas"></span></p>
+
+        <ul id="ritualList">
+          <li>Acenda a vela com intenção de recomeço</li>
+          <li>Feche os olhos por alguns instantes</li>
+          <li>Concentre-se no coração</li>
+          <li>Faça a oração por 1 minuto</li>
+        </ul>
+
+        <div class="prayer-box">
+          <strong>Oração:</strong>
+          <p id="ritualPrayer">
+            “Eu me permito recomeçar. Eu escolho me cuidar.
+            Eu escolho me amar.”
+          </p>
+        </div>
+      </div>
+
+      <!-- AÇÃO -->
+      <div class="init-block">
+        <h3>✨ Ação do dia</h3>
+        <p id="actionText">
+          Escreva em um papel uma intenção sincera para esta nova fase da sua vida.
+        </p>
+      </div>
+
+      <!-- CHECKLIST -->
+      <div class="init-block">
+        <h3>✅ Checklist do dia</h3>
+
+        <label class="check-item">
+          <input type="checkbox" id="checkYoga" />
+          <span>Concluí o yoga</span>
+        </label>
+
+        <label class="check-item">
+          <input type="checkbox"  id="checkRitual" />
+          <span>Concluí o ritual</span>
+        </label>
+
+        <label class="check-item">
+          <input type="checkbox" id="checkAcao" />
+          <span>Concluí a ação do dia</span>
+        </label>
+      </div>
+
+      <!-- RODAPÉ -->
+      <div class="init-footer">
+        <div class="progress-box">
+          <p class="progress-title">Progresso atual</p>
+          <strong id="progressCount">1 de 30 dias concluídos</strong>
+          <p class="progress-text"id="progressText" >
+            Após concluir este dia, o próximo será liberado em 24 horas.
+          </p>
+        </div>
+
+        <button class="finish-btn" id="finishBtn">Concluir dia</button>
+      </div>
+    </div>
+
+    <!-- VISÃO DA JORNADA -->
+    <div class="journey-box">
+      <h2>Sua jornada</h2>
+      <p class="journey-subtitle">Os próximos dias serão liberados aos poucos.</p>
+
+     <div class="journey-grid" id="journeyGrid"></div>
+    </div>
+
+  </div>
+  <script src="iniciacao.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comunidade do Amor - Linha Branca</title>
+
+  <link rel="stylesheet" href="global.css" />
+  <link rel="stylesheet" href="ritual-linha-branca.css" />
+</head>
+<body>
+  <div class="container">
+
+    <!-- TOPO -->
+    <div class="ritual-day-header">
+      <a href="rituals.html" class="back-link">← Voltar</a>
+
+      <div class="ritual-title-row">
+        <div>
+          <h1>Linha Branca</h1>
+          <p class="ritual-subtitle">
+            Siga esta jornada com paz, constância e intenção durante os 7 dias do ritual.
+          </p>
+        </div>
+
+        <div class="ritual-day-badge" id="dayBadge">Dia 1 de 7</div>
+      </div>
+    </div>
+
+    <!-- AVISO -->
+    <div class="ritual-warning">
+      <p id="warningText">
+        Este ritual é oferecido aos guias da Umbanda. A maçã partida ao meio representa a abertura da intenção, e a vela branca posicionada entre as duas partes sustenta a luz, a paz e a condução espiritual do trabalho.
+      </p>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="ritual-layout">
+
+      <!-- COLUNA ESQUERDA -->
+      <div class="ritual-main-card">
+
+        <div class="ritual-status-row">
+          <span class="ritual-tag white">Linha branca</span>
+          <span class="ritual-status-badge" id="statusBadge">Disponível agora</span>
+        </div>
+
+        <h2 id="dayTitle">Dia 1 — Abertura da Luz</h2>
+
+        <p class="ritual-message" id="messageText">
+          Hoje você inicia este trabalho na linha branca com serenidade e respeito. A maçã partida ao meio representa a abertura da intenção, e a vela branca entre as duas partes fortalece a luz espiritual do pedido oferecido aos guias da Umbanda.
+        </p>
+
+        <!-- ÁREA DE IMAGEM COMENTADA PARA USO FUTURO -->
+        <!--
+        <div class="ritual-image-card">
+          <img
+            id="ritualImage"
+            src="https://via.placeholder.com/900x420?text=Imagem+do+Ritual"
+            alt="Representação visual do ritual Linha Branca"
+          />
+        </div>
+        -->
+
+        <div class="ritual-block">
+          <h3>Passos do dia</h3>
+          <ul id="ritualStepsList">
+            <li>Parta a maçã ao meio com cuidado e intenção.</li>
+            <li>Posicione a vela branca entre as duas partes da maçã.</li>
+            <li>Ofereça seu pedido aos guias da Umbanda com paz e verdade.</li>
+            <li>Permaneça por alguns minutos em oração e presença espiritual.</li>
+          </ul>
+        </div>
+
+        <div class="ritual-block">
+          <h3>Intenção do dia</h3>
+          <p id="ritualPrayer">
+            Peço aos guias da Umbanda que recebam esta oferenda e conduzam minha intenção com paz, luz, verdade e direção espiritual.
+          </p>
+        </div>
+
+        <div class="ritual-block">
+          <h3>Orientação final</h3>
+          <p id="actionText">
+            Ao concluir, preserve sua paz interior e mantenha sua mente firme no propósito deste ritual, sem ansiedade e sem desarmonia.
+          </p>
+        </div>
+      </div>
+
+      <!-- COLUNA DIREITA -->
+      <div class="ritual-side-card">
+
+        <div class="progress-card">
+          <span class="side-label">Progresso</span>
+          <h3 id="progressCount">1 de 7 dias</h3>
+          <p id="progressText">
+            Conclua as etapas do dia para avançar para a próxima fase do ritual.
+          </p>
+        </div>
+
+        <div class="checklist-card">
+          <span class="side-label">Checklist do dia</span>
+
+          <label class="check-item">
+            <input type="checkbox" id="checkPasso1" />
+            <span>Parti a maçã ao meio com cuidado</span>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" id="checkPasso2" />
+            <span>Posicionei a vela branca entre as duas partes</span>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" id="checkPasso3" />
+            <span>Ofereci meu pedido aos guias da Umbanda</span>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" id="checkPasso4" />
+            <span>Concluí o momento de oração com paz e presença</span>
+          </label>
+
+          <button class="finish-btn" id="finishBtn">Concluir dia</button>
+        </div>
+
+        <div class="journey-card">
+          <span class="side-label">Jornada do ritual</span>
+          <div class="journey-grid" id="journeyGrid">
+            <div class="journey-day active">Dia 1</div>
+            <div class="journey-day locked">Dia 2</div>
+            <div class="journey-day locked">Dia 3</div>
+            <div class="journey-day locked">Dia 4</div>
+            <div class="journey-day locked">Dia 5</div>
+            <div class="journey-day locked">Dia 6</div>
+            <div class="journey-day locked">Dia 7</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</body>
+
+<script src="ritual-linha-branca.js" ></script>
+
+</html>

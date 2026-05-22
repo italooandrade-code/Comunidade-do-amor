@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comunidade do Amor - Vodoo Africano</title>
+
+  <link rel="stylesheet" href="global.css" />
+  <link rel="stylesheet" href="ritual-vodoo-africano.css" />
+</head>
+<body>
+  <div class="container">
+
+    <!-- TOPO -->
+    <div class="ritual-day-header">
+      <a href="rituals.html" class="back-link">← Voltar</a>
+
+      <div class="ritual-title-row">
+        <div>
+          <h1>Vodoo Africano</h1>
+          <p class="ritual-subtitle">
+            Siga o ritual com presença, firmeza e intenção durante os 7 dias da jornada.
+          </p>
+        </div>
+
+        <div class="ritual-day-badge" id="dayBadge">Dia 1 de 7</div>
+      </div>
+    </div>
+
+    <!-- AVISO -->
+    <div class="ritual-warning">
+      <p id="warningText">
+        Este ritual deve ser realizado com constância, respeito e foco. Cada etapa fortalece a direção espiritual da intenção trabalhada.
+      </p>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="ritual-layout">
+
+      <!-- COLUNA ESQUERDA -->
+      <div class="ritual-main-card">
+
+        <div class="ritual-status-row">
+          <span class="ritual-tag african">Linha africana</span>
+          <span class="ritual-status-badge" id="statusBadge">Disponível agora</span>
+        </div>
+
+        <h2 id="dayTitle">Dia 1 — Abertura do Caminho</h2>
+
+        <p class="ritual-message" id="messageText">
+          Hoje você inicia o fortalecimento da intenção. O primeiro dia abre o caminho energético do ritual e prepara sua firmeza interior para os próximos passos.
+        </p>
+
+        <div class="ritual-block">
+          <h3>Passos do dia</h3>
+          <ul id="ritualStepsList">
+            <li>Prepare o ambiente com calma e respeito.</li>
+            <li>Organize os elementos do ritual antes de começar.</li>
+            <li>Realize a etapa principal com intenção firme.</li>
+            <li>Finalize com silêncio interior e presença.</li>
+          </ul>
+        </div>
+
+        <div class="ritual-block">
+          <h3>Intenção do dia</h3>
+          <p id="ritualPrayer">
+            Hoje eu abro este trabalho com verdade, presença e direção. Que minha intenção siga com força, clareza e firmeza espiritual.
+          </p>
+        </div>
+
+        <div class="ritual-block">
+          <h3>Orientação final</h3>
+          <p id="actionText">
+            Evite dispersão emocional após concluir o ritual. Preserve sua energia e mantenha sua mente firme no propósito desta jornada.
+          </p>
+        </div>
+      </div>
+
+      <!-- COLUNA DIREITA -->
+      <div class="ritual-side-card">
+
+        <div class="progress-card">
+          <span class="side-label">Progresso</span>
+          <h3 id="progressCount">1 de 7 dias</h3>
+          <p id="progressText">
+            Conclua as etapas do dia para avançar para a próxima fase do ritual.
+          </p>
+        </div>
+
+        <div class="checklist-card">
+          <span class="side-label">Checklist do dia</span>
+
+          <label class="check-item">
+            <input type="checkbox" id="checkPasso1" />
+            <span>Preparei o ambiente corretamente</span>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" id="checkPasso2" />
+            <span>Organizei os elementos do ritual</span>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" id="checkPasso3" />
+            <span>Realizei a etapa principal do dia</span>
+          </label>
+
+          <label class="check-item">
+            <input type="checkbox" id="checkPasso4" />
+            <span>Finalizei com presença e firmeza</span>
+          </label>
+
+          <button class="finish-btn" id="finishBtn">Concluir dia</button>
+        </div>
+
+        <div class="journey-card">
+          <span class="side-label">Jornada do ritual</span>
+          <div class="journey-grid" id="journeyGrid">
+            <div class="journey-day active">Dia 1</div>
+            <div class="journey-day locked">Dia 2</div>
+            <div class="journey-day locked">Dia 3</div>
+            <div class="journey-day locked">Dia 4</div>
+            <div class="journey-day locked">Dia 5</div>
+            <div class="journey-day locked">Dia 6</div>
+            <div class="journey-day locked">Dia 7</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <script src="ritual-vodoo-africano.js" ></script>
+
+</body>
+</html>

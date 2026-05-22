@@ -1,0 +1,190 @@
+/* TOPO */
+.rituals-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.rituals-header-left h1 {
+  font-size: 30px;
+  margin-bottom: 8px;
+  color: #2c1f3f;
+}
+
+.rituals-subtitle {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 12px;
+  text-decoration: none;
+  color: #6b4ca5;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.back-link:hover {
+  opacity: 0.8;
+}
+
+.rituals-badge {
+  background: white;
+  padding: 10px 16px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  font-size: 14px;
+  font-weight: bold;
+  color: #6b4ca5;
+}
+
+/* AVISO */
+.rituals-warning {
+  background: white;
+  padding: 18px 20px;
+  border-radius: 18px;
+  margin-bottom: 25px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+  border-left: 4px solid #8b5cf6;
+}
+
+.rituals-warning p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4b3d63;
+}
+
+/* GRID */
+.rituals-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+/* CARD */
+.ritual-card {
+  background: white;
+  padding: 24px;
+  border-radius: 22px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  transition: 0.25s;
+}
+
+.ritual-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(123, 44, 255, 0.12);
+}
+
+.ritual-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.ritual-tag {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.ritual-tag.african {
+  background: #f4e9ff;
+  color: #7b3fe4;
+}
+
+.ritual-tag.white {
+  background: #eef6ff;
+  color: #3f6be4;
+}
+
+.ritual-tag.special {
+  background: linear-gradient(90deg, #7b2cff, #d946ef);
+  color: white;
+}
+
+.ritual-time {
+  font-size: 13px;
+  font-weight: bold;
+  color: #6b4ca5;
+  opacity: 0.9;
+}
+
+.ritual-card h2 {
+  font-size: 24px;
+  margin-bottom: 12px;
+  color: #2c1f3f;
+}
+
+.ritual-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.8;
+  margin-bottom: 18px;
+}
+
+.ritual-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.ritual-meta span {
+  font-size: 13px;
+  color: #5c4c75;
+  background: #f8f6fb;
+  padding: 10px 12px;
+  border-radius: 12px;
+}
+
+/* CARD ESPECIAL */
+.ritual-special {
+  border: 1px solid rgba(123, 44, 255, 0.18);
+  background: linear-gradient(180deg, #ffffff, #faf6ff);
+}
+
+/* BOTÃO */
+.ritual-btn {
+  width: 100%;
+  border: none;
+  padding: 14px 18px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.locked-btn {
+  background: #ddd6e6;
+  color: #6d617c;
+  cursor: not-allowed;
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+  .rituals-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .ritual-card {
+    padding: 20px;
+  }
+
+  .rituals-header-left h1 {
+    font-size: 26px;
+  }
+
+  .ritual-card h2 {
+    font-size: 21px;
+  }
+}

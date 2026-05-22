@@ -1,0 +1,276 @@
+/* =========================
+   BASE
+========================= */
+
+body {
+  margin: 0;
+  background: #f6f1f8;
+  font-family: Inter, sans-serif;
+  color: #2d2148;
+}
+
+.container {
+  width: min(1080px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 24px 0 28px;
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   TOPO
+========================= */
+
+.ia-header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.back-link {
+  width: fit-content;
+  text-decoration: none;
+  color: #7f63d9;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.back-link:hover {
+  opacity: 0.85;
+}
+
+.ia-title-wrap h1 {
+  margin: 0;
+  font-size: 46px;
+  line-height: 1;
+  font-weight: 700;
+  color: #24174a;
+}
+
+.ia-subtitle {
+  margin: 6px 0 0;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #6f6587;
+}
+
+
+/* =========================
+   AVISO
+========================= */
+
+.ia-warning {
+  background: #ffffff;
+  border-left: 3px solid #9b7cf0;
+  border-radius: 22px;
+  padding: 18px 22px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 14px rgba(91, 66, 145, 0.04);
+}
+
+.ia-warning p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #4b3d69;
+}
+
+
+/* =========================
+   BLOCO PRINCIPAL
+========================= */
+
+.ia-box {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 20px 22px;
+  box-shadow: 0 6px 18px rgba(91, 66, 145, 0.04);
+  margin-bottom: 18px;
+}
+
+.ia-label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #4c3d6b;
+}
+
+.ia-textarea {
+  width: 100%;
+  min-height: 120px;
+  max-height: 140px;
+  resize: none;
+  border: 1px solid #e9e1f4;
+  border-radius: 20px;
+  background: #fcfbfe;
+  padding: 16px 18px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #2d2148;
+  outline: none;
+  box-sizing: border-box;
+  transition: 0.2s ease;
+}
+
+.ia-textarea::placeholder {
+  color: #9d93b7;
+}
+
+.ia-textarea:focus {
+  border-color: #c8b3f8;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(155, 124, 240, 0.08);
+}
+
+
+/* =========================
+   CHIPS
+========================= */
+
+.ia-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 14px 0 18px;
+}
+
+.suggestion-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: #f2ebfb;
+  color: #7c63c9;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+/* =========================
+   BOTÃO
+========================= */
+
+.ia-btn {
+  width: 100%;
+  border: none;
+  border-radius: 18px;
+  padding: 16px 20px;
+  background: #8f6ee8;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.ia-btn:hover {
+  background: #8765e3;
+}
+
+
+/* =========================
+   CARD DE RESPOSTA
+========================= */
+
+.ia-response-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 22px;
+  box-shadow: 0 6px 18px rgba(91, 66, 145, 0.04);
+}
+
+.ia-response-tag {
+  display: inline-block;
+  padding: 9px 15px;
+  border-radius: 999px;
+  background: #f2ebfb;
+  color: #7c63c9;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.ia-response-card h2 {
+  margin: 0 0 10px;
+  font-size: 24px;
+  line-height: 1.25;
+  color: #24174a;
+}
+
+.ia-response-card p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #6f6587;
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 768px) {
+  .container {
+    width: min(100% - 24px, 100%);
+    padding: 20px 0 30px;
+  }
+
+  .ia-title-wrap h1 {
+    font-size: 38px;
+  }
+
+  .ia-subtitle {
+    font-size: 16px;
+  }
+
+  .ia-warning,
+  .ia-box,
+  .ia-response-card {
+    border-radius: 20px;
+    padding: 18px;
+  }
+
+  .ia-response-card h2 {
+    font-size: 22px;
+  }
+
+  .ia-textarea {
+    min-height: 110px;
+    max-height: 130px;
+  }
+
+  .ia-suggestions {
+    gap: 8px;
+  }
+
+  .suggestion-chip {
+    padding: 9px 14px;
+    font-size: 13px;
+  }
+
+  .ia-btn {
+    padding: 15px 18px;
+    font-size: 15px;
+  }
+}
+
+/* =========================
+   CHIP ATIVO
+========================= */
+
+.suggestion-chip {
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.suggestion-chip:hover {
+  background: #ece3fb;
+}
+
+.suggestion-chip.active {
+  background: #8f6ee8;
+  color: #ffffff;
+}

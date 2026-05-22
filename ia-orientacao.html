@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comunidade do Amor - IA</title>
+
+  <link rel="stylesheet" href="global.css" />
+  <link rel="stylesheet" href="ia-orientacao.css" />
+</head>
+<body>
+  <div class="container">
+
+    <!-- TOPO -->
+    <div class="ia-header">
+      <a href="home.html" class="back-link">← Voltar</a>
+
+      <div class="ia-title-wrap">
+        <h1>IA</h1>
+        <p class="ia-subtitle">
+          Converse e receba orientação
+        </p>
+      </div>
+    </div>
+
+    <!-- AVISO -->
+    <div class="ia-warning">
+      <p>
+        Escreva o que você está sentindo ou o que deseja compreender com mais clareza neste momento.
+      </p>
+    </div>
+
+    <!-- BLOCO PRINCIPAL -->
+    <div class="ia-box">
+      <label for="iaMessage" class="ia-label">Sua mensagem</label>
+
+      <textarea
+        id="iaMessage"
+        class="ia-textarea"
+        placeholder="Escreva aqui o que você está vivendo, sentindo ou buscando entender..."
+      ></textarea>
+
+      <div class="ia-suggestions">
+        <span class="suggestion-chip">Amor</span>
+        <span class="suggestion-chip">Clareza</span>
+        <span class="suggestion-chip">Ansiedade</span>
+        <span class="suggestion-chip">Direcionamento</span>
+        <span class="suggestion-chip">Energia</span>
+        <span class="suggestion-chip">Dúvida</span>
+      </div>
+
+      <button class="ia-btn">Receber orientação</button>
+    </div>
+
+    <!-- CARD DE RESPOSTA -->
+    <div class="ia-response-card">
+      <span class="ia-response-tag">Orientação</span>
+      <h2>Sua orientação aparecerá aqui</h2>
+      <p>
+        Quando esta funcionalidade estiver conectada, a resposta será exibida neste espaço com a mesma leveza e cuidado da comunidade.
+      </p>
+    </div>
+
+  </div>
+  <script src="ia-orientacao.js"></script>
+</body>
+</html>

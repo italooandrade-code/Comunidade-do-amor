@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Comunidade</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="admin-card">
+
+      <h1>Painel Admin</h1>
+      <p class="subtitle">Gerenciar acessos</p>
+
+      <!-- FORM -->
+      <form id="adminForm">
+
+        <div class="input-group">
+        <input 
+         type="text" 
+         id="name" 
+         placeholder="Nome do cliente"
+         required
+  >
+        </div>
+
+        <div class="input-group">
+          <input 
+            type="email" 
+            id="email" 
+            placeholder="Email do cliente"
+            required
+          >
+        </div>
+
+        <button type="submit">Adicionar usuário</button>
+
+      </form>
+
+      <!-- LISTA -->
+      <div class="user-list" id="userList"></div>
+
+    </div>
+
+  </div>
+
+  <script src="admin.js"></script>
+
+</body>
+</html>

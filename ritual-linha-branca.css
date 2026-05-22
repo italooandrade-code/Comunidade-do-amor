@@ -1,0 +1,393 @@
+/* =========================
+   BASE
+========================= */
+
+body {
+  margin: 0;
+  background: #f5f1f8;
+  font-family: Inter, sans-serif;
+  color: #2d2148;
+}
+
+.container {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 28px 0 36px;
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   TOPO
+========================= */
+
+.ritual-day-header {
+  margin-bottom: 22px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 14px;
+  text-decoration: none;
+  color: #7b4dff;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.back-link:hover {
+  opacity: 0.85;
+}
+
+.ritual-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.ritual-title-row h1 {
+  margin: 0;
+  font-size: 48px;
+  line-height: 1;
+  color: #23164a;
+}
+
+.ritual-subtitle {
+  margin: 12px 0 0;
+  max-width: 760px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #6a6184;
+}
+
+.ritual-day-badge {
+  flex-shrink: 0;
+  background: #ffffff;
+  color: #6f4fd7;
+  border-radius: 18px;
+  padding: 14px 20px;
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 6px 16px rgba(91, 66, 145, 0.04);
+}
+
+
+/* =========================
+   AVISO
+========================= */
+
+.ritual-warning {
+  background: #ffffff;
+  border-left: 4px solid #8f6ee8;
+  border-radius: 22px;
+  padding: 18px 22px;
+  margin-bottom: 22px;
+  box-shadow: 0 6px 18px rgba(91, 66, 145, 0.04);
+}
+
+.ritual-warning p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #43345f;
+}
+
+
+/* =========================
+   LAYOUT PRINCIPAL
+========================= */
+
+.ritual-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(320px, 0.9fr);
+  gap: 18px;
+  align-items: start;
+}
+
+
+/* =========================
+   CARD PRINCIPAL
+========================= */
+
+.ritual-main-card {
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 26px;
+  box-shadow: 0 8px 22px rgba(91, 66, 145, 0.04);
+}
+
+.ritual-status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.ritual-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.ritual-tag.white {
+  background: #edf3ff;
+  color: #4d78ff;
+}
+
+.ritual-status-badge {
+  font-size: 14px;
+  font-weight: 700;
+  color: #7057bf;
+  background: #f6f1fa;
+  padding: 10px 16px;
+  border-radius: 999px;
+}
+
+.ritual-main-card h2 {
+  margin: 0 0 14px;
+  font-size: 34px;
+  line-height: 1.2;
+  color: #22164a;
+}
+
+.ritual-message {
+  margin: 0 0 20px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #5f5775;
+}
+
+
+/* =========================
+   IMAGEM DO RITUAL
+   DEIXADA COMENTADA PARA USO FUTURO
+========================= */
+
+/*
+.ritual-image-card {
+  margin-bottom: 22px;
+  background: #f8f4fb;
+  border: 1px solid #eee7f7;
+  border-radius: 22px;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.ritual-image-card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
+}
+*/
+
+
+/* =========================
+   BLOCOS DE TEXTO
+========================= */
+
+.ritual-block {
+  margin-bottom: 20px;
+}
+
+.ritual-block:last-child {
+  margin-bottom: 0;
+}
+
+.ritual-block h3 {
+  margin: 0 0 12px;
+  font-size: 19px;
+  color: #302353;
+}
+
+.ritual-block p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #5d5576;
+}
+
+.ritual-block ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.ritual-block li {
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #5d5576;
+}
+
+
+/* =========================
+   COLUNA LATERAL
+========================= */
+
+.ritual-side-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.progress-card,
+.checklist-card,
+.journey-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 22px;
+  box-shadow: 0 8px 22px rgba(91, 66, 145, 0.04);
+}
+
+.side-label {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: #f1e9fc;
+  color: #7b4dff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.progress-card h3 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  color: #22164a;
+}
+
+.progress-card p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #6b6284;
+}
+
+
+/* =========================
+   CHECKLIST
+========================= */
+
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #564d70;
+  cursor: pointer;
+}
+
+.check-item input {
+  margin-top: 3px;
+  accent-color: #8f6ee8;
+}
+
+.finish-btn {
+  width: 100%;
+  margin-top: 10px;
+  border: none;
+  border-radius: 18px;
+  padding: 15px 18px;
+  background: #8f6ee8;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.finish-btn:hover {
+  background: #8462de;
+}
+
+
+/* =========================
+   JORNADA
+========================= */
+
+.journey-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.journey-day {
+  text-align: center;
+  padding: 12px 8px;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.journey-day.active {
+  background: #efe5ff;
+  color: #7b4dff;
+}
+
+.journey-day.locked {
+  background: #f4eff8;
+  color: #a295be;
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 980px) {
+  .ritual-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ritual-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: min(100% - 24px, 100%);
+    padding: 22px 0 30px;
+  }
+
+  .ritual-title-row h1 {
+    font-size: 38px;
+  }
+
+  .ritual-subtitle {
+    font-size: 16px;
+  }
+
+  .ritual-main-card,
+  .progress-card,
+  .checklist-card,
+  .journey-card,
+  .ritual-warning {
+    border-radius: 22px;
+    padding: 18px;
+  }
+
+  .ritual-main-card h2 {
+    font-size: 28px;
+  }
+
+  /*
+  .ritual-image-card img {
+    height: 220px;
+  }
+  */
+
+  .journey-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
