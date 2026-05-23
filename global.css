@@ -128,18 +128,7 @@ body {
   opacity: 0.7;
 }
 
-/* RESPONSIVO */
-@media (max-width: 768px) {
 
-  .container {
-    padding: 20px;
-  }
-
-  .card-grid {
-    grid-template-columns: 1fr;
-  }
-
-}
 
 /* BLOCO DE BOAS-VINDAS */
 .welcome-box {
@@ -185,36 +174,76 @@ body {
 }
 
 @media (max-width: 768px) {
+
+  body {
+    padding: 14px;
+  }
+
   .container {
-    width: min(100% - 24px, 100%);
-    padding: 20px 0;
+    width: 100%;
+    padding: 10px 0;
   }
 
-  h1 {
-    font-size: 30px;
-    text-align: center;
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
   }
 
-  .subtitle,
-  #welcomeText {
+  .header-left {
+    width: 100%;
+  }
+
+  .header-left h1 {
+    font-size: 28px;
+  }
+
+  .header-subtitle {
     font-size: 15px;
-    text-align: center;
   }
 
-  .cards,
-  .grid,
-  .home-grid {
+  .user-info {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .welcome-box,
+  .daily-message {
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .welcome-box h2 {
+    font-size: 24px;
+  }
+
+  .welcome-box p,
+  .daily-message p {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .section-title {
+    font-size: 18px;
+  }
+
+  .card-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
 
   .card {
     width: 100%;
-    padding: 18px;
+    padding: 20px;
     border-radius: 22px;
   }
 
-  button {
-    width: 100%;
-    font-size: 15px;
+  .card h3 {
+    font-size: 17px;
   }
+
+  .card p {
+    font-size: 14px;
+  }
+
 }
