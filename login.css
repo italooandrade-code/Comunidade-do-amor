@@ -185,3 +185,35 @@ button:hover {
 
   text-align: center;
 }
+
+@media (max-width: 768px) {
+  .container {
+    width: min(100% - 24px, 100%);
+    padding: 20px 0;
+  }
+
+  .login-card {
+    width: 100%;
+    padding: 22px 18px;
+    border-radius: 22px;
+  }
+
+  h1 {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 15px;
+  }
+}

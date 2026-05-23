@@ -183,3 +183,38 @@ body {
 .delete-btn:hover {
   opacity: 0.8;
 }
+
+@media (max-width: 768px) {
+  .container {
+    width: min(100% - 24px, 100%);
+    padding: 20px 0;
+  }
+
+  h1 {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .subtitle,
+  #welcomeText {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .cards,
+  .grid,
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    width: 100%;
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 15px;
+  }
+}
