@@ -11,7 +11,6 @@ const session = require("express-session");
 const bcrypt = require("bcrypt");
 const OpenAI = require("openai");
 const path = require("path");
-
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
@@ -21,7 +20,9 @@ const app = express();
 app.use(cors({
   origin: [
     "http://127.0.0.1:5500",
-    "http://localhost:5500"
+    "http://localhost:5500",
+    "https://comunidade-do-amor-production.up.railway.app",
+    "https://comunidadedoamor2026oficial.online"
   ],
   credentials: true
 }));
