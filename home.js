@@ -1,6 +1,6 @@
 //=========================
 
-const API_URL = "https://comunidade-do-amor-production.up.railway.app";
+const API_URL = "";
 
 // 1️⃣ CHAVES
 //=========================

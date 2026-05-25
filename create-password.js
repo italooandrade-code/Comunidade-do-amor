@@ -2,7 +2,7 @@
 // 1️⃣ CHAVES DO SISTEMA
 //=========================
 
-const API_URL = "https://comunidade-do-amor-production.up.railway.app";
+const API_URL = "";
 const LOGGED_KEY = "comunidade_logged";
 const SESSION_EMAIL_KEY = "comunidade_email";
 

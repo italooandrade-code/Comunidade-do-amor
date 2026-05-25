@@ -2,7 +2,7 @@
 // 0️⃣ PROTEÇÃO DO ADMIN
 //=========================
 
-const API_URL = "https://comunidade-do-amor-production.up.railway.app";
+const API_URL = "";
 fetch(`${API_URL}/verificar-admin`, {
   method: "GET",
   credentials: "include"
