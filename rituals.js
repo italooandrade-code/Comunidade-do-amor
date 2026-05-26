@@ -22,16 +22,40 @@ fetch(`${API_URL}/verificar-sessao`, {
 
   email = data.email;
 
-  const INIT_PROGRESS_KEY = `init_progress_${email}`;
+  //=========================
+// BUSCAR STATUS DA INICIAÇÃO NO BANCO
+//=========================
 
-  initProgress = Number(localStorage.getItem(INIT_PROGRESS_KEY)) || 1;
-  hasCompletedInitiation = initProgress > 30;
+fetch(`${API_URL}/status-iniciacao`, {
+  method: "GET",
+  credentials: "include"
+})
+.then(response => response.json())
+.then(data => {
+
+  if (!data.success) {
+    lockRituals();
+    return;
+  }
+
+  hasCompletedInitiation = data.iniciacaoConcluida;
 
   if (hasCompletedInitiation) {
     unlockRituals();
   } else {
     lockRituals();
   }
+
+  console.log("Iniciação concluída?", hasCompletedInitiation);
+
+})
+.catch(error => {
+
+  console.log("Erro ao buscar status da iniciação:", error);
+
+  lockRituals();
+
+});
 
   console.log("Email logado:", email);
   console.log("Progresso da iniciação:", initProgress);

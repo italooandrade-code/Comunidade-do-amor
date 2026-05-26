@@ -5,6 +5,7 @@ require("dotenv").config();
 
 const express = require("express");
 
+
 const cors = require("cors");
 
 const session = require("express-session");
@@ -43,10 +44,12 @@ app.use(session({
 const Usuario = require("./models/Usuario");
 
 const HistoricoIA = require("./models/HistoricoIA");
+const ProgressoIniciacao = require("./models/ProgressoIniciacao");
 
 // Faz o Sequelize criar a tabela automaticamente
 Usuario.sync();
 HistoricoIA.sync();
+ProgressoIniciacao.sync();
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "login.html"));
 });
@@ -294,6 +297,255 @@ app.get("/verificar-sessao", (req, res) => {
   res.json({
     logado: false
   });
+
+});
+
+//=========================
+// PROGRESSO DA INICIAÇÃO
+//=========================
+app.get("/progresso-iniciacao", (req, res) => {
+
+  // 1. Se não tiver usuário logado, não deixa acessar
+  if (!req.session.usuarioId) {
+    return res.json({
+      success: false,
+      message: "Usuário não logado."
+    });
+  }
+
+  // 2. Procura progresso desse usuário no banco
+  ProgressoIniciacao.findOne({
+    where: {
+      usuarioId: req.session.usuarioId
+    }
+  })
+  .then((progresso) => {
+
+    // 3. Se ainda não existir progresso, cria o primeiro registro
+    if (!progresso) {
+      return ProgressoIniciacao.create({
+        usuarioId: req.session.usuarioId,
+        diaAtual: 1,
+        checklistYoga: false,
+        checklistRitual: false,
+        checklistAcao: false,
+        ultimoDiaConcluidoEm: null,
+        iniciacaoConcluida: false
+      });
+    }
+
+    // 4. Se já existir, retorna o progresso encontrado
+    return progresso;
+
+  })
+  .then((progresso) => {
+    res.json({
+      success: true,
+      progresso: progresso
+    });
+  })
+  .catch((erro) => {
+    console.log("Erro ao buscar progresso da iniciação:", erro);
+
+    res.json({
+      success: false,
+      message: "Erro ao buscar progresso da iniciação."
+    });
+  });
+
+});
+
+//=========================
+// SALVAR CHECKLIST
+//=========================
+app.post("/salvar-checklist", async (req, res) => {
+
+  try {
+
+    if(!req.session.usuarioId){
+      return res.json({
+        success: false
+      });
+    }
+
+    const progresso = await ProgressoIniciacao.findOne({
+      where: {
+        usuarioId: req.session.usuarioId
+      }
+    });
+
+    if(!progresso){
+      return res.json({
+        success: false
+      });
+    }
+
+    progresso.checklistYoga = req.body.yoga;
+    progresso.checklistRitual = req.body.ritual;
+    progresso.checklistAcao = req.body.acao;
+
+    await progresso.save();
+
+    res.json({
+      success: true
+    });
+
+  } catch(erro){
+
+    console.log("Erro ao salvar checklist:", erro);
+
+    res.json({
+      success: false
+    });
+
+  }
+
+});
+
+//=========================
+// CONCLUIR DIA DA INICIAÇÃO
+//=========================
+app.post("/concluir-dia-iniciacao", async (req, res) => {
+
+  try {
+
+    // 1. Verifica se existe usuário logado
+    if (!req.session.usuarioId) {
+      return res.json({
+        success: false,
+        message: "Usuário não logado."
+      });
+    }
+
+    // 2. Busca o progresso desse usuário no banco
+    const progresso = await ProgressoIniciacao.findOne({
+      where: {
+        usuarioId: req.session.usuarioId
+      }
+    });
+
+    // 3. Se não encontrar progresso, bloqueia
+    if (!progresso) {
+      return res.json({
+        success: false,
+        message: "Progresso da iniciação não encontrado."
+      });
+    }
+
+    // 4. Verifica se o checklist está completo
+    const checklistCompleto =
+      progresso.checklistYoga &&
+      progresso.checklistRitual &&
+      progresso.checklistAcao;
+
+    if (!checklistCompleto) {
+      return res.json({
+        success: false,
+        message: "Você precisa concluir todos os itens do checklist antes de avançar."
+      });
+    }
+
+    // 5. Verifica bloqueio de 24 horas
+    if (progresso.ultimoDiaConcluidoEm) {
+      const ultimaConclusao = new Date(progresso.ultimoDiaConcluidoEm).getTime();
+      const agora = Date.now();
+      const vinteQuatroHoras = 24 * 60 * 60 * 1000;
+
+      const diferenca = agora - ultimaConclusao;
+
+      if (diferenca < vinteQuatroHoras) {
+        return res.json({
+          success: false,
+          message: "O próximo dia ainda não foi liberado."
+        });
+      }
+    }
+
+    // 6. Salva a data/hora da conclusão atual
+    progresso.ultimoDiaConcluidoEm = new Date();
+
+    // 7. Avança o dia
+    progresso.diaAtual = progresso.diaAtual + 1;
+
+    // 8. Se passou do dia 30, marca iniciação concluída
+    if (progresso.diaAtual > 30) {
+      progresso.iniciacaoConcluida = true;
+    }
+
+    // 9. Reseta checklist para o próximo dia
+    progresso.checklistYoga = false;
+    progresso.checklistRitual = false;
+    progresso.checklistAcao = false;
+
+    // 10. Salva tudo no MySQL
+    await progresso.save();
+
+    // 11. Retorna o progresso atualizado para o front
+    res.json({
+      success: true,
+      message: "Dia concluído com sucesso.",
+      progresso: progresso
+    });
+
+  } catch (erro) {
+
+    console.log("Erro ao concluir dia da iniciação:", erro);
+
+    res.json({
+      success: false,
+      message: "Erro ao concluir dia da iniciação."
+    });
+
+  }
+
+});
+
+//=========================
+// STATUS DA INICIAÇÃO
+//=========================
+app.get("/status-iniciacao", async (req, res) => {
+
+  try {
+
+    // 1. Verifica se o usuário está logado
+    if (!req.session.usuarioId) {
+      return res.json({
+        success: false,
+        message: "Usuário não logado."
+      });
+    }
+
+    // 2. Busca o progresso da iniciação no banco
+    const progresso = await ProgressoIniciacao.findOne({
+      where: {
+        usuarioId: req.session.usuarioId
+      }
+    });
+
+    // 3. Se não existir progresso ainda, considera como não concluído
+    if (!progresso) {
+      return res.json({
+        success: true,
+        iniciacaoConcluida: false
+      });
+    }
+
+    // 4. Retorna somente o status que o rituals.js precisa saber
+    res.json({
+      success: true,
+      iniciacaoConcluida: progresso.iniciacaoConcluida
+    });
+
+  } catch (erro) {
+
+    console.log("Erro ao buscar status da iniciação:", erro);
+
+    res.json({
+      success: false,
+      message: "Erro ao buscar status da iniciação."
+    });
+
+  }
 
 });
 

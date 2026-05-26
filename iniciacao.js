@@ -20,27 +20,46 @@ fetch(`${API_URL}/verificar-sessao`, {
 
   email = data.email;
 
-  INIT_PROGRESS_KEY = `init_progress_${email}`;
-  INIT_CHECKLIST_KEY = `init_checklist_${email}`;
-  INIT_LAST_COMPLETED_KEY = `init_last_completed_${email}`;
+  //=========================
+// BUSCAR PROGRESSO NO BANCO
+//=========================
+fetch(`${API_URL}/progresso-iniciacao`, {
+  method: "GET",
+  credentials: "include"
+})
+.then(response => response.json())
+.then(data => {
 
-  currentDay = Number(localStorage.getItem(INIT_PROGRESS_KEY)) || 1;
+  if(!data.success){
+    return;
+  }
 
-  currentChecklist = JSON.parse(localStorage.getItem(INIT_CHECKLIST_KEY)) || {
-    yoga: false,
-    ritual: false,
-    acao: false
+  // dia atual salvo no banco
+  currentDay = data.progresso.diaAtual;
+
+  // checklist salvo
+  currentChecklist = {
+    yoga: data.progresso.checklistYoga,
+    ritual: data.progresso.checklistRitual,
+    acao: data.progresso.checklistAcao
   };
 
-  lastCompletedAt = localStorage.getItem(INIT_LAST_COMPLETED_KEY) || null;
+  // data da última conclusão
+  lastCompletedAt = data.progresso.ultimoDiaConcluidoEm;
 
-  console.log("Email logado:", email);
-console.log("Dia atual:", currentDay);
-console.log("Checklist atual:", currentChecklist);
-console.log("Última conclusão:", lastCompletedAt);
-console.log("Dia atual no array:", iniciacaoDays.find(item => item.dia === currentDay));
+  console.log("Progresso carregado do banco:", data.progresso);
 
-renderCurrentDay();
+  // renderiza tela
+  renderCurrentDay();
+
+})
+.catch((erro) => {
+  console.log("Erro ao buscar progresso:", erro);
+});
+
+
+
+
 
   
 
@@ -1152,7 +1171,20 @@ function getRemainingLockTime() {
 //=========================
 
 function saveChecklist() {
-  localStorage.setItem(INIT_CHECKLIST_KEY, JSON.stringify(currentChecklist));
+
+  fetch(`${API_URL}/salvar-checklist`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    credentials: "include",
+    body: JSON.stringify({
+      yoga: currentChecklist.yoga,
+      ritual: currentChecklist.ritual,
+      acao: currentChecklist.acao
+    })
+  });
+
 }
 
 
@@ -1185,42 +1217,53 @@ function handleChecklistChange() {
 //=========================
 
 function handleFinishDay() {
-  // se o checklist não estiver completo, não faz nada
+
+  // segurança: se checklist não estiver completo, não envia
   if (!isChecklistComplete()) {
     return;
   }
 
-  // se ainda estiver no bloqueio de 24h, não faz nada
+  // segurança: se ainda estiver bloqueado, não envia
   if (isDayLocked()) {
     return;
   }
 
-  // salva o horário exato da conclusão
-  lastCompletedAt = new Date().toISOString();
-  localStorage.setItem(INIT_LAST_COMPLETED_KEY, lastCompletedAt);
+  fetch(`${API_URL}/concluir-dia-iniciacao`, {
+    method: "POST",
+    credentials: "include"
+  })
+  .then(response => response.json())
+  .then(data => {
 
-  // avança para o próximo dia
-  currentDay = currentDay + 1;
-  localStorage.setItem(INIT_PROGRESS_KEY, currentDay);
+    if (!data.success) {
+      console.log(data.message);
+      return;
+    }
 
-  // reseta checklist para o novo dia
-  currentChecklist = {
-    yoga: false,
-    ritual: false,
-    acao: false
-  };
+    // atualiza o dia com o valor vindo do banco
+    currentDay = data.progresso.diaAtual;
 
-  localStorage.setItem(INIT_CHECKLIST_KEY, JSON.stringify(currentChecklist));
+    // atualiza checklist vindo do banco
+    currentChecklist = {
+      yoga: data.progresso.checklistYoga,
+      ritual: data.progresso.checklistRitual,
+      acao: data.progresso.checklistAcao
+    };
 
-  // re-renderiza a tela
-  renderCurrentDay();
+    // atualiza data da última conclusão
+    lastCompletedAt = data.progresso.ultimoDiaConcluidoEm;
 
-  // debug
-  console.log("Dia concluído com sucesso.");
-  console.log("Novo dia atual:", currentDay);
-  console.log("Última conclusão salva em:", lastCompletedAt);
+    // renderiza a tela novamente
+    renderCurrentDay();
+
+    console.log("Dia concluído com sucesso no banco:", data.progresso);
+
+  })
+  .catch(erro => {
+    console.log("Erro ao concluir dia:", erro);
+  });
+
 }
-
 
 //=========================
 // 2️⃣2️⃣ OUVIR MUDANÇAS NOS CHECKBOXES
