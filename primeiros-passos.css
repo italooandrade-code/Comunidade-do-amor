@@ -79,26 +79,38 @@ body{
 
     cursor:pointer;
 }
-
 .audio-controls{
     display:flex;
-    gap:12px;
-    margin:15px 0 20px 0;
+    gap:10px;
+    margin:20px 0;
     flex-wrap:wrap;
 }
 
 .audio-btn{
     border:none;
-    background:#7d5df0;
+    background:linear-gradient(135deg, #7d5df0, #9d6bff);
     color:white;
-    padding:12px 18px;
-    border-radius:14px;
+    padding:12px 22px;
+    border-radius:999px;
     font-size:15px;
-    font-weight:bold;
+    font-weight:600;
     cursor:pointer;
+    transition:all .25s ease;
+    box-shadow:0 4px 12px rgba(125,93,240,.25);
+}
+
+.audio-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 18px rgba(125,93,240,.35);
 }
 
 .audio-btn.stop{
-    background:#efe8ff;
-    color:#5b3bb8;
+    background:white;
+    color:#7d5df0;
+    border:1px solid #d9ccff;
+    box-shadow:none;
+}
+
+.audio-btn.stop:hover{
+    background:#f7f3ff;
 }
