@@ -1,0 +1,81 @@
+body{
+    margin:0;
+    padding:0;
+    min-height:100vh;
+
+    background-image:url("assets/assetsfundo-tarot.png");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:30px 20px;
+}
+
+.back-btn{
+    text-decoration:none;
+    color:#4b2ca1;
+    font-weight:bold;
+}
+
+.welcome-card,
+.video-card{
+    background:rgba(255,255,255,0.88);
+    backdrop-filter:blur(4px);
+
+    border-radius:24px;
+
+    padding:25px;
+    margin-top:20px;
+}
+
+.welcome-card h1{
+    color:#2f1b57;
+}
+
+.welcome-card p{
+    line-height:1.7;
+    color:#4e4562;
+}
+
+.video-placeholder{
+
+    height:300px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:2px dashed #bba7ea;
+    border-radius:20px;
+
+    color:#7f6aa8;
+    font-weight:bold;
+}
+
+.start-btn{
+
+    width:100%;
+
+    margin-top:25px;
+
+    border:none;
+
+    background:#7d5df0;
+    color:white;
+
+    padding:18px;
+
+    border-radius:20px;
+
+    font-size:18px;
+    font-weight:bold;
+
+    cursor:pointer;
+}
