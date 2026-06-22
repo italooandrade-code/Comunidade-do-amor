@@ -1,3 +1,37 @@
+//=========================
+// 1️⃣ PROTEÇÃO COM SESSION
+//=========================
+
+const API_URL = "";
+let email = "";
+
+fetch(`${API_URL}/verificar-sessao`, {
+  method: "GET",
+  credentials: "include"
+})
+.then(response => response.json())
+.then(data => {
+
+  if (data.logado === false) {
+    window.location.href = "login.html";
+    return;
+  }
+
+  email = data.email;
+
+  console.log("Usuário logado:", email);
+
+})
+.catch(error => {
+
+  console.log("Erro ao verificar sessão:", error);
+
+  window.location.href = "login.html";
+
+});
+
+
+
 const btnStartJourney =
 document.getElementById("btnStartJourney");
 
