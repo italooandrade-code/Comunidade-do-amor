@@ -53,7 +53,7 @@ btnOuvirTexto.addEventListener("click", () => {
   const fala = new SpeechSynthesisUtterance(texto);
 
   fala.lang = "pt-BR";
-  fala.rate = 1.20;
+  fala.rate = 1.17;
   fala.pitch = 1;
 
   speechSynthesis.speak(fala);
