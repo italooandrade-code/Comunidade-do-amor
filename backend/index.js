@@ -672,6 +672,73 @@ app.post("/concluir-apresentacao-tarot", async (req, res) => {
 });
 
 //=========================
+// CONCLUIR CARTA DO TAROT
+//=========================
+app.post("/concluir-carta-tarot", async (req, res) => {
+
+  try {
+
+    if (!req.session.usuarioId) {
+      return res.json({
+        success: false,
+        message: "Usuário não logado."
+      });
+    }
+
+    const cartaId = Number(req.body.cartaId);
+
+    if (!cartaId) {
+      return res.json({
+        success: false,
+        message: "Carta inválida."
+      });
+    }
+
+    const progresso = await ProgressoTarot.findOne({
+      where: {
+        usuarioId: req.session.usuarioId
+      }
+    });
+
+    if (!progresso) {
+      return res.json({
+        success: false,
+        message: "Progresso não encontrado."
+      });
+    }
+
+    if (cartaId > progresso.cartasLiberadas) {
+      return res.json({
+        success: false,
+        message: "Esta carta ainda está bloqueada."
+      });
+    }
+
+    if (cartaId > progresso.ultimaCarta) {
+      progresso.ultimaCarta = cartaId;
+      await progresso.save();
+    }
+
+    res.json({
+      success: true,
+      message: "Carta concluída com sucesso.",
+      progresso: progresso
+    });
+
+  } catch (erro) {
+
+    console.log("Erro ao concluir carta do Tarot:", erro);
+
+    res.json({
+      success: false,
+      message: "Erro ao concluir carta."
+    });
+
+  }
+
+});
+
+//=========================
 // LOGOUT
 //=========================
 app.post("/logout", (req, res) => {

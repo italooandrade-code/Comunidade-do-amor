@@ -790,18 +790,50 @@ btnFinishCard.addEventListener("click", () => {
     return;
   }
 
+fetch(`${API_URL}/concluir-carta-tarot`, {
+
+  method: "POST",
+
+  credentials: "include",
+
+  headers: {
+    "Content-Type": "application/json"
+  },
+
+  body: JSON.stringify({
+    cartaId: cartaAtual.id
+  })
+
+})
+.then(response => response.json())
+.then(data => {
+
+  if (!data.success) {
+    alert(data.message);
+    return;
+  }
+
   const proximaCarta = cartaAtual.id + 1;
 
-if (proximaCarta <= cartasTarot.length) {
+  if (proximaCarta <= cartasTarot.length) {
 
     alert("Parabéns! Você concluiu esta carta.");
 
     window.location.href = `carta-tarot.html?carta=${proximaCarta}`;
 
-} else {
+  } else {
 
     alert("Parabéns! Você concluiu todas as cartas disponíveis nesta versão do curso.");
 
-}
+  }
+
+})
+.catch(error => {
+
+  console.log("Erro:", error);
+
+  alert("Erro ao concluir carta.");
+
+});
 
 });
