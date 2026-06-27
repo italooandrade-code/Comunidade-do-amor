@@ -45,7 +45,13 @@ const Usuario = require("./models/Usuario");
 
 const HistoricoIA = require("./models/HistoricoIA");
 const ProgressoIniciacao = require("./models/ProgressoIniciacao");
-const ProgressoTarot = require("./models/ProgressoTarot");
+const caminho = require.resolve("./models/ProgressoTarot");
+
+
+
+const ProgressoTarot = require(caminho);
+
+
 
 // Faz o Sequelize criar a tabela automaticamente
 Usuario.sync();
