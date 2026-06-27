@@ -125,9 +125,9 @@ const cartasTarot = [
 
 ];
 
-renderCartas();
+buscarProgressoTarot();
 
-function renderCartas(){
+function renderCartas(progresso){
 
     listaCartas.innerHTML = "";
 
@@ -137,23 +137,72 @@ function renderCartas(){
 
         card.className = "tarot-card-item";
 
-        card.innerHTML = `
+        let icone = "🔒";
+let status = "Bloqueada";
 
-            <div class="tarot-card-title">
+if(carta.id <= progresso.ultimaCarta){
 
-                🔒 ${carta.nome}
+    icone = "✅";
+    status = "Concluída";
 
-            </div>
+}
+else if(carta.id <= progresso.cartasLiberadas){
 
-            <div class="tarot-card-status">
+    icone = "▶";
+    status = "Continuar";
 
-                Bloqueada
+}
 
-            </div>
+card.innerHTML = `
 
-        `;
+    <div class="tarot-card-title">
+
+        ${icone} ${carta.nome}
+
+    </div>
+
+    <div class="tarot-card-status">
+
+        ${status}
+
+    </div>
+
+`;
 
         listaCartas.appendChild(card);
+
+    });
+
+}
+
+//=========================
+// BUSCAR PROGRESSO TAROT
+//=========================
+
+function buscarProgressoTarot(){
+
+    fetch(`${API_URL}/progresso-tarot`, {
+
+        method: "GET",
+        credentials: "include"
+
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        if(!data.success){
+
+            alert(data.message);
+            return;
+
+        }
+
+        renderCartas(data.progresso);
+
+    })
+    .catch(error => {
+
+        console.log("Erro ao buscar progresso do Tarot:", error);
 
     });
 
