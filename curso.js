@@ -45,7 +45,46 @@ const btnIaCurso = document.getElementById("btnIaCurso");
 
 // card 1
 btnPrimeirosPassos.addEventListener("click", () => {
-  window.location.href = "primeiros-passos.html";
+
+  fetch(`${API_URL}/progresso-tarot`, {
+
+    method: "GET",
+    credentials: "include"
+
+  })
+  .then(response => response.json())
+  .then(data => {
+
+    if(!data.success){
+
+      alert(data.message);
+      return;
+
+    }
+
+    const progresso = data.progresso;
+
+    if(!progresso.apresentacaoConcluida){
+
+      window.location.href = "primeiros-passos.html";
+      return;
+
+    }
+
+    const proximaCarta = progresso.ultimaCarta + 1;
+
+    window.location.href =
+      `carta-tarot.html?carta=${proximaCarta}`;
+
+  })
+  .catch(error => {
+
+    console.log("Erro:", error);
+
+    alert("Erro ao abrir o curso.");
+
+  });
+
 });
 
 // card 2

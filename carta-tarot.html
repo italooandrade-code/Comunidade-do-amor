@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Carta do Tarot</title>
+
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="carta-tarot.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <a href="primeiros-passos.html" class="back-btn">
+      ← Voltar
+    </a>
+
+    <div class="tarot-card-page">
+
+      <div class="tarot-header">
+        <span id="cardStepBadge">Carta 1 de 22</span>
+        <h1 id="cardTitle">O Mago</h1>
+        <p id="cardSubtitle">
+          Aprenda o significado, a energia e a aplicação desta carta.
+        </p>
+      </div>
+
+      <div class="step-tabs">
+        <button class="step-tab active" id="tabVideo">1. Vídeo</button>
+        <button class="step-tab" id="tabText">2. Explicação</button>
+        <button class="step-tab" id="tabQuiz">3. Quiz</button>
+      </div>
+
+      <!-- ETAPA 1: VÍDEO -->
+      <section class="step-section active" id="sectionVideo">
+
+    <img
+        id="cardImage"
+        class="card-image"
+        src=""
+        alt="Carta do Tarot"
+    >
+
+    <div class="video-box" id="videoBox">
+
+        <video
+            id="cardVideo"
+            controls
+            preload="metadata"
+            style="display:none;"
+        >
+            <source id="videoSource" src="" type="video/mp4">
+            Seu navegador não suporta vídeo.
+        </video>
+
+        <div id="videoPlaceholder">
+            🎥 Vídeo da carta será adicionado em breve
+        </div>
+
+    </div>
+
+    <button class="main-btn" id="btnGoText">
+        Continuar para explicação
+    </button>
+
+</section>
+
+      <!-- ETAPA 2: TEXTO -->
+      <section class="step-section" id="sectionText">
+
+        <div class="text-box">
+          <h2 id="textTitle">Significado da carta</h2>
+
+          <button id="btnOuvirCarta" class="audio-btn">
+            🔊 Ouvir explicação
+          </button>
+
+          <button id="btnPararCarta" class="audio-btn stop">
+            ⏹️ Parar
+          </button>
+
+          <div id="cardText">
+            Texto da carta aparecerá aqui.
+          </div>
+        </div>
+
+        <button class="main-btn" id="btnGoQuiz">
+          Continuar para o quiz
+        </button>
+
+      </section>
+
+      <!-- ETAPA 3: QUIZ -->
+      <section class="step-section" id="sectionQuiz">
+
+        <div class="quiz-box">
+          <h2>Quiz da carta</h2>
+
+          <div id="quizContainer">
+            Perguntas aparecerão aqui.
+          </div>
+        </div>
+
+        <button class="main-btn" id="btnFinishCard">
+          Concluir carta
+        </button>
+
+      </section>
+
+    </div>
+
+  </div>
+
+  <script src="carta-tarot.js"></script>
+
+</body>
+</html>

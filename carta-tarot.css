@@ -1,0 +1,216 @@
+body{
+  margin:0;
+  padding:0;
+  min-height:100vh;
+
+  background-image:url("assets/fundo-tarot.png");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+.container{
+  max-width:950px;
+  margin:auto;
+  padding:30px 20px;
+}
+
+.back-btn{
+  text-decoration:none;
+  color:#4b2ca1;
+  font-weight:bold;
+}
+
+.tarot-card-page{
+  margin-top:20px;
+  background:rgba(255,255,255,0.9);
+  backdrop-filter:blur(5px);
+  border-radius:26px;
+  padding:28px;
+}
+
+.tarot-header span{
+  display:inline-block;
+  background:#efe8ff;
+  color:#6d4ee6;
+  padding:8px 14px;
+  border-radius:999px;
+  font-weight:bold;
+  font-size:14px;
+}
+
+.tarot-header h1{
+  color:#2f1b57;
+  margin-bottom:8px;
+}
+
+.tarot-header p{
+  color:#5d5370;
+  line-height:1.6;
+}
+
+.step-tabs{
+  display:flex;
+  gap:10px;
+  margin:25px 0;
+  flex-wrap:wrap;
+}
+
+.step-tab{
+  border:none;
+  background:#f1ecff;
+  color:#6d4ee6;
+  padding:12px 16px;
+  border-radius:999px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.step-tab.active{
+  background:#7d5df0;
+  color:white;
+}
+
+.step-section{
+  display:none;
+}
+
+.step-section.active{
+  display:block;
+}
+
+.video-box{
+  min-height:280px;
+  border:2px dashed #bba7ea;
+  border-radius:22px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#7f6aa8;
+  font-weight:bold;
+  text-align:center;
+  padding:20px;
+}
+
+.text-box,
+.quiz-box{
+  background:#faf7ff;
+  border-radius:22px;
+  padding:24px;
+}
+
+.text-box h2,
+.quiz-box h2{
+  color:#2f1b57;
+}
+
+#cardText{
+  margin-top:18px;
+  color:#4e4562;
+  line-height:1.8;
+}
+
+.main-btn{
+  width:100%;
+  margin-top:24px;
+  border:none;
+  background:linear-gradient(135deg, #7d5df0, #9d6bff);
+  color:white;
+  padding:17px;
+  border-radius:20px;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 4px 12px rgba(125,93,240,.25);
+}
+
+.audio-btn{
+  border:none;
+  background:linear-gradient(135deg, #7d5df0, #9d6bff);
+  color:white;
+  padding:10px 18px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+  margin-right:8px;
+  margin-top:8px;
+}
+
+.audio-btn.stop{
+  background:white;
+  color:#7d5df0;
+  border:1px solid #d9ccff;
+}
+
+.quiz-question{
+  margin-bottom:22px;
+}
+
+.quiz-question h3{
+  color:#3d2a63;
+}
+
+.quiz-option{
+  display:block;
+  width:100%;
+  text-align:left;
+  margin:8px 0;
+  padding:12px 14px;
+  border-radius:14px;
+  border:1px solid #d9ccff;
+  background:white;
+  cursor:pointer;
+}
+
+.quiz-option.selected{
+  background:#efe8ff;
+  border-color:#7d5df0;
+}
+
+.card-image{
+
+    width:260px;
+
+    display:block;
+
+    margin:0 auto 25px;
+
+    border-radius:16px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+
+}
+
+#cardVideo{
+
+    width:100%;
+
+    border-radius:20px;
+
+}
+
+#videoPlaceholder{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-height:280px;
+
+    color:#7f6aa8;
+
+    font-weight:bold;
+
+    text-align:center;
+
+    padding:20px;
+
+}

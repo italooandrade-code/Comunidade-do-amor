@@ -45,11 +45,13 @@ const Usuario = require("./models/Usuario");
 
 const HistoricoIA = require("./models/HistoricoIA");
 const ProgressoIniciacao = require("./models/ProgressoIniciacao");
+const ProgressoTarot = require("./models/ProgressoTarot");
 
 // Faz o Sequelize criar a tabela automaticamente
 Usuario.sync();
 HistoricoIA.sync();
 ProgressoIniciacao.sync();
+ProgressoTarot.sync();
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "login.html"));
 });
@@ -543,6 +545,120 @@ app.get("/status-iniciacao", async (req, res) => {
     res.json({
       success: false,
       message: "Erro ao buscar status da iniciação."
+    });
+
+  }
+
+});
+
+//=========================
+// PROGRESSO DO TAROT
+//=========================
+app.get("/progresso-tarot", async (req, res) => {
+
+  try {
+
+    // Verifica se existe usuário logado
+    if (!req.session.usuarioId) {
+      return res.json({
+        success: false,
+        message: "Usuário não logado."
+      });
+    }
+
+    // Procura o progresso do usuário
+    let progresso = await ProgressoTarot.findOne({
+      where: {
+        usuarioId: req.session.usuarioId
+      }
+    });
+
+    // Se não existir, cria automaticamente
+    if (!progresso) {
+
+      progresso = await ProgressoTarot.create({
+
+        usuarioId: req.session.usuarioId,
+
+        apresentacaoConcluida: false,
+
+        ultimaCarta: 0,
+
+        cartasLiberadas: 2,
+
+        proximaLiberacao: null
+
+      });
+
+    }
+
+    // Retorna o progresso
+    res.json({
+      success: true,
+      progresso: progresso
+    });
+
+  } catch (erro) {
+
+    console.log("Erro ao buscar progresso do Tarot:", erro);
+
+    res.json({
+      success: false,
+      message: "Erro ao buscar progresso."
+    });
+
+  }
+
+});
+
+//=========================
+// CONCLUIR APRESENTAÇÃO DO TAROT
+//=========================
+app.post("/concluir-apresentacao-tarot", async (req, res) => {
+
+  try {
+
+    // Verifica usuário logado
+    if (!req.session.usuarioId) {
+      return res.json({
+        success: false,
+        message: "Usuário não logado."
+      });
+    }
+
+    // Busca progresso
+    const progresso = await ProgressoTarot.findOne({
+      where: {
+        usuarioId: req.session.usuarioId
+      }
+    });
+
+    if (!progresso) {
+
+      return res.json({
+        success: false,
+        message: "Progresso não encontrado."
+      });
+
+    }
+
+    // Marca apresentação como concluída
+    progresso.apresentacaoConcluida = true;
+
+    await progresso.save();
+
+    res.json({
+      success: true,
+      message: "Apresentação concluída."
+    });
+
+  } catch (erro) {
+
+    console.log("Erro ao concluir apresentação:", erro);
+
+    res.json({
+      success: false,
+      message: "Erro ao concluir apresentação."
     });
 
   }

@@ -37,7 +37,33 @@ document.getElementById("btnStartJourney");
 
 btnStartJourney.addEventListener("click", () => {
 
-    alert("Aqui amanhã vamos abrir a Carta 1 - O Mago");
+  fetch(`${API_URL}/concluir-apresentacao-tarot`, {
+
+    method: "POST",
+
+    credentials: "include"
+
+  })
+  .then(response => response.json())
+  .then(data => {
+
+    if(!data.success){
+
+      alert(data.message);
+      return;
+
+    }
+
+    window.location.href = "carta-tarot.html?carta=1";
+
+  })
+  .catch(error => {
+
+    console.log("Erro:", error);
+
+    alert("Erro ao iniciar a jornada.");
+
+  });
 
 });
 
