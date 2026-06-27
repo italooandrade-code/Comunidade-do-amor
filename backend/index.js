@@ -598,7 +598,32 @@ app.get("/progresso-tarot", async (req, res) => {
 
     }
 
-    // Retorna o progresso
+        //=========================
+    // VERIFICA LIBERAÇÃO AUTOMÁTICA
+    //=========================
+
+    if (progresso.proximaLiberacao) {
+
+      const agora = new Date();
+
+      if (agora >= progresso.proximaLiberacao) {
+
+        progresso.cartasLiberadas += 2;
+
+        // Não ultrapassar a quantidade de cartas disponíveis
+        if (progresso.cartasLiberadas > 12) {
+          progresso.cartasLiberadas = 12;
+        }
+
+        progresso.proximaLiberacao = null;
+
+        await progresso.save();
+
+      }
+
+    }
+
+    // Retorna o progresso atualizado
     res.json({
       success: true,
       progresso: progresso
@@ -715,9 +740,31 @@ app.post("/concluir-carta-tarot", async (req, res) => {
     }
 
     if (cartaId > progresso.ultimaCarta) {
-      progresso.ultimaCarta = cartaId;
-      await progresso.save();
-    }
+
+  progresso.ultimaCarta = cartaId;
+
+  // Se concluiu todas as cartas liberadas,
+  // agenda a próxima liberação para 24h depois.
+
+  // Se terminou todas as cartas atualmente liberadas,
+// agenda a próxima liberação (caso ainda existam cartas).
+
+if (
+    progresso.ultimaCarta >= progresso.cartasLiberadas &&
+    progresso.cartasLiberadas < 12
+) {
+
+    const agora = new Date();
+
+    progresso.proximaLiberacao = new Date(
+        agora.getTime() + (24 * 60 * 60 * 1000)
+    );
+
+}
+
+  await progresso.save();
+
+}
 
     res.json({
       success: true,
