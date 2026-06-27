@@ -645,7 +645,11 @@ function iniciarTela(){
 
 });
 
-  function carregarCarta(cartaId){
+  
+
+}
+
+function carregarCarta(cartaId){
 
     cartaAtual = cartasTarot.find(item => item.id === cartaId);
 
@@ -655,13 +659,11 @@ function iniciarTela(){
         return;
 
     }
+renderCarta();
 
-    renderCarta();
+buscarProgressoTarot();
 
-    showStep("video");
-
-}
-
+showStep("video");
 }
 
 
@@ -886,63 +888,68 @@ const listaCartas = document.getElementById("listaCartas");
 
 
 
-buscarProgressoTarot();
+
 
 function renderCartas(progresso){
-
-    card.addEventListener("click", () => {
-
-    if(carta.id > progresso.cartasLiberadas){
-
-        alert("Esta carta ainda está bloqueada.");
-        return;
-
-    }
-
-    window.location.href = `carta-tarot.html?carta=${carta.id}`;
-
-});
+    console.log("Renderizando jornada...");
+console.log(progresso);
+console.log(listaCartas);
 
     listaCartas.innerHTML = "";
 
-    cartasTarot.forEach(carta=>{
+    cartasTarot.forEach(carta => {
 
         const card = document.createElement("div");
-        card.style.cursor = "pointer";
 
         card.className = "tarot-card-item";
 
+        // Definir status da carta
         let icone = "🔒";
-let status = "Bloqueada";
+        let status = "Bloqueada";
 
-if(carta.id <= progresso.ultimaCarta){
+        if(carta.id <= progresso.ultimaCarta){
 
-    icone = "✅";
-    status = "Concluída";
+            icone = "✅";
+            status = "Concluída";
 
-}
-else if(carta.id <= progresso.cartasLiberadas){
+        }else if(carta.id <= progresso.cartasLiberadas){
 
-    icone = "▶";
-    status = "Continuar";
+            icone = "▶";
+            status = "Disponível";
 
-}
+        }
 
-card.innerHTML = `
+        card.innerHTML = `
 
-    <div class="tarot-card-title">
+            <div class="tarot-card-title">
 
-        ${icone} ${carta.nome}
+                ${icone} ${carta.nome}
 
-    </div>
+            </div>
 
-    <div class="tarot-card-status">
+            <div class="tarot-card-status">
 
-        ${status}
+                ${status}
 
-    </div>
+            </div>
 
-`;
+        `;
+
+        card.style.cursor = "pointer";
+
+        card.addEventListener("click", () => {
+
+            if(carta.id > progresso.cartasLiberadas){
+
+                alert("Esta carta ainda está bloqueada.");
+                return;
+
+            }
+
+            window.location.href =
+            `carta-tarot.html?carta=${carta.id}`;
+
+        });
 
         listaCartas.appendChild(card);
 
