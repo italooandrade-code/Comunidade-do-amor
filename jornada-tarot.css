@@ -1,0 +1,198 @@
+/*=========================
+CONTAINER
+=========================*/
+
+.container{
+
+    max-width:900px;
+    margin:auto;
+    padding:30px 20px;
+
+}
+
+
+/*=========================
+CARD PRINCIPAL
+=========================*/
+
+.jornada-card{
+
+    background:#ffffff;
+    border-radius:18px;
+    padding:30px;
+
+    box-shadow:0 10px 35px rgba(0,0,0,.08);
+
+}
+
+
+/*=========================
+TÍTULO
+=========================*/
+
+.jornada-card h1{
+
+    text-align:center;
+    font-size:34px;
+    margin-bottom:15px;
+
+    color:#1d1d1d;
+
+}
+
+#textoTempo{
+
+    text-align:center;
+    font-size:18px;
+    color:#666;
+
+    margin-bottom:35px;
+
+}
+
+
+/*=========================
+LISTA
+=========================*/
+
+.lista-cartas{
+
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+
+}
+
+
+/*=========================
+CARD DA CARTA
+=========================*/
+
+.tarot-card-item{
+
+    background:#fafafa;
+
+    border:1px solid #ececec;
+
+    border-radius:14px;
+
+    padding:18px 20px;
+
+    transition:.25s;
+
+}
+
+
+.tarot-card-item:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 8px 18px rgba(0,0,0,.08);
+
+}
+
+
+.tarot-card-title{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    margin-bottom:6px;
+
+}
+
+
+.tarot-card-status{
+
+    color:#777;
+
+    font-size:15px;
+
+}
+
+
+/*=========================
+BOTÕES
+=========================*/
+
+.main-btn{
+
+    margin-top:30px;
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#6b2be6;
+
+    color:white;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+}
+
+
+.main-btn:hover{
+
+    background:#5521ba;
+
+}
+
+
+.secondary-btn{
+
+    margin-top:15px;
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:10px;
+
+    border:1px solid #dadada;
+
+    background:white;
+
+    cursor:pointer;
+
+}
+
+
+/*=========================
+RESPONSIVO
+=========================*/
+
+@media(max-width:700px){
+
+.jornada-card{
+
+    padding:20px;
+
+}
+
+.jornada-card h1{
+
+    font-size:28px;
+
+}
+
+#textoTempo{
+
+    font-size:16px;
+
+}
+
+.tarot-card-title{
+
+    font-size:16px;
+
+}
+
+}

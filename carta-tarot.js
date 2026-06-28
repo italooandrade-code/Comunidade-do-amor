@@ -632,14 +632,11 @@ function iniciarTela(){
 
     if(cartaId > progresso.cartasLiberadas){
 
-        alert("Esta carta ainda está bloqueada.");
+    window.location.href = "jornada-tarot.html";
 
-        window.location.href =
-        `carta-tarot.html?carta=${progresso.ultimaCarta + 1}`;
+    return;
 
-        return;
-
-    }
+}
 
     carregarCarta(cartaId);
 
@@ -661,7 +658,7 @@ function carregarCarta(cartaId){
     }
 renderCarta();
 
-buscarProgressoTarot();
+
 
 showStep("video");
 }
@@ -850,24 +847,29 @@ fetch(`${API_URL}/concluir-carta-tarot`, {
 .then(response => response.json())
 .then(data => {
 
-  if (!data.success) {
-    alert(data.message);
-    return;
-  }
+    if(!data.success){
 
-  const proximaCarta = cartaAtual.id + 1;
+        alert(data.message);
+        return;
 
-  if (proximaCarta <= cartasTarot.length) {
+    }
 
     alert("Parabéns! Você concluiu esta carta.");
 
-    window.location.href = `carta-tarot.html?carta=${proximaCarta}`;
+    const progresso = data.progresso;
 
-  } else {
+    // Ainda existe outra carta liberada?
+    if(progresso.ultimaCarta < progresso.cartasLiberadas){
 
-    alert("Parabéns! Você concluiu todas as cartas disponíveis nesta versão do curso.");
+        window.location.href =
+        `carta-tarot.html?carta=${progresso.ultimaCarta + 1}`;
 
-  }
+        return;
+
+    }
+
+    // Terminou todas as cartas liberadas
+    window.location.href = "jornada-tarot.html";
 
 })
 .catch(error => {
@@ -880,112 +882,3 @@ fetch(`${API_URL}/concluir-carta-tarot`, {
 
 });
 
-//=========================
-// JORNADA TAROT
-//=========================
-
-const listaCartas = document.getElementById("listaCartas");
-
-
-
-
-
-function renderCartas(progresso){
-    console.log("Renderizando jornada...");
-console.log(progresso);
-console.log(listaCartas);
-
-    listaCartas.innerHTML = "";
-
-    cartasTarot.forEach(carta => {
-
-        const card = document.createElement("div");
-
-        card.className = "tarot-card-item";
-
-        // Definir status da carta
-        let icone = "🔒";
-        let status = "Bloqueada";
-
-        if(carta.id <= progresso.ultimaCarta){
-
-            icone = "✅";
-            status = "Concluída";
-
-        }else if(carta.id <= progresso.cartasLiberadas){
-
-            icone = "▶";
-            status = "Disponível";
-
-        }
-
-        card.innerHTML = `
-
-            <div class="tarot-card-title">
-
-                ${icone} ${carta.nome}
-
-            </div>
-
-            <div class="tarot-card-status">
-
-                ${status}
-
-            </div>
-
-        `;
-
-        card.style.cursor = "pointer";
-
-        card.addEventListener("click", () => {
-
-            if(carta.id > progresso.cartasLiberadas){
-
-                alert("Esta carta ainda está bloqueada.");
-                return;
-
-            }
-
-            window.location.href =
-            `carta-tarot.html?carta=${carta.id}`;
-
-        });
-
-        listaCartas.appendChild(card);
-
-    });
-
-}
-
-//=========================
-// BUSCAR PROGRESSO TAROT
-//=========================
-
-function buscarProgressoTarot(){
-
-    fetch(`${API_URL}/progresso-tarot`, {
-
-        method: "GET",
-        credentials: "include"
-
-    })
-    .then(response => response.json())
-    .then(data => {
-
-        if(!data.success){
-
-            alert(data.message);
-            return;
-
-        }
-
-        renderCartas(data.progresso);
-
-    })
-    .catch(error => {
-
-        console.log("Erro ao buscar progresso do Tarot:", error);
-
-    });
-
-}
